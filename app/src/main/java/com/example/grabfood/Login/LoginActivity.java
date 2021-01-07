@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -31,7 +30,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,7 +41,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 
 public class    LoginActivity extends AppCompatActivity {
 
@@ -53,6 +50,8 @@ public class    LoginActivity extends AppCompatActivity {
     private TextView mToSignUp;
     private Button loginBtn;
     private int RC_SIGN_IN = 0;
+    private int LOGOUT_REQUEST = 123;
+
 
     private CallbackManager mCallbackManager;
     private FirebaseAuth mFirebaseAuth;
@@ -120,7 +119,7 @@ public class    LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.googleButton:
-                        signIn();
+                        signInGoogle();
                         break;
                 }
             }
@@ -173,14 +172,22 @@ public class    LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if( getIntent().getExtras() != null)
+        {
+            int requestCode = getIntent().getExtras().getInt("requestCode");
+            if (requestCode == LOGOUT_REQUEST){
+                signOutGoogle();
+            }
+        }
+
     }
 
-    private void signIn() {
+    private void signInGoogle() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void signOut(){
+    private void signOutGoogle(){
         mGoogleSignInClient.signOut()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
