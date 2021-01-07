@@ -1,4 +1,5 @@
 package com.example.grabfood.Login;
+import com.example.grabfood.Customer.MainCustomerActivity;
 import com.example.grabfood.Helper.User;
 import com.example.grabfood.MainActivity;
 import com.example.grabfood.R;
@@ -290,7 +291,7 @@ public class    LoginActivity extends AppCompatActivity {
     }
 
     private void goToCustomerActivity(){
-        Intent intent = new Intent(this, MainShipperActivity.class);
+        Intent intent = new Intent(this, MainCustomerActivity.class);
         startActivity(intent);
         this.finish();
     }

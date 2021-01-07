@@ -35,6 +35,11 @@
         <activity android:name=".Restaurant.ListOrdersActivity" />
         <activity android:name=".Shipper.MainShipperActivity"/>
         <activity android:name=".Shipper.OrderDetailActivity"/>
+        <activity android:name=".Customer.MainCustomerActivity"/>
+        <activity android:name=".Customer.OrderActivity"/>
+        <activity android:name=".Customer.PaymentActivity"/>
+        <activity android:name=".Customer.ReviewActivity"/>
+
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

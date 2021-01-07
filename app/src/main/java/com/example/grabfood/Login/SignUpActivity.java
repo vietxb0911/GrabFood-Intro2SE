@@ -1,4 +1,5 @@
 package com.example.grabfood.Login;
+import com.example.grabfood.Customer.MainCustomerActivity;
 import com.example.grabfood.Helper.User;
 import com.example.grabfood.MainActivity;
 import com.example.grabfood.R;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.grabfood.Restaurant.MainRestaurantActivity;
+import com.example.grabfood.Shipper.MainShipperActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -84,7 +86,7 @@ public class SignUpActivity extends AppCompatActivity {
                 goToMainCustomerActivity();
                 break;
             case 1:
-                goToMainRShipperActivity();
+                goToMainShipperActivity();
                 break;
             case 2:
                 goToMainRestaurantActivity();
@@ -100,14 +102,14 @@ public class SignUpActivity extends AppCompatActivity {
         this.finish();
     }
 
-    private void goToMainRShipperActivity(){
-        Intent intent = new Intent(this, MainRestaurantActivity.class);
+    private void goToMainShipperActivity(){
+        Intent intent = new Intent(this, MainShipperActivity.class);
         startActivity(intent);
         this.finish();
     }
 
     private void goToMainCustomerActivity(){
-        Intent intent = new Intent(this, MainRestaurantActivity.class);
+        Intent intent = new Intent(this, MainCustomerActivity.class);
         startActivity(intent);
         this.finish();
     }
