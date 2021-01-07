@@ -141,7 +141,7 @@ public class    LoginActivity extends AppCompatActivity {
 
                             String true_password = user.getPassword();
                             if (true_password.equals(password)){
-                                Log.e(TAG, "Log in successsfully");
+                                Log.e(TAG, "Log in successsfully, type: "+ String.valueOf(user.getType()));
                                 goToHomepage(user);
                             }
                             else {

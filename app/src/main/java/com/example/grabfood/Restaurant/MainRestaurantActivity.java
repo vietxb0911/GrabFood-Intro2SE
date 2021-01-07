@@ -1,88 +1,59 @@
- package com.example.grabfood.Restaurant;
- import com.example.grabfood.MainActivity;
- import com.example.grabfood.R;
+package com.example.grabfood.Restaurant;
+import com.example.grabfood.R;
 
- import android.content.Intent;
- import android.os.Bundle;
- import android.util.Log;
- import android.view.View;
- import android.widget.Button;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
- import androidx.annotation.Nullable;
- import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
 
- import java.util.ArrayList;
- import java.util.List;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
- public class MainRestaurantActivity extends AppCompatActivity implements View.OnClickListener {
-     private Button mBtnOrder,mBtnMenu;
-     ArrayList<String> name,price;
+public class MainRestaurantActivity extends AppCompatActivity {
+    private BottomNavigationView bottomNavigationView;
+    private FrameLayout frameLayout;
+
+    private HomeFragment homeFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_restaurant);
-        mBtnMenu = findViewById(R.id.btnMenu);
-        mBtnOrder = findViewById(R.id.btnOrder);
-        if(name==null){
-            name = new ArrayList<>();
-        }
-        if(price==null){
-            price=new ArrayList<>();
-        }
-        mBtnMenu.setOnClickListener(new View.OnClickListener() {
+
+        homeFragment = new HomeFragment();
+
+        setFragment(homeFragment);
+
+        frameLayout = (FrameLayout) findViewById(R.id.flContainer);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-
-                showMenuRestaurant();
-               // Navigation.findNavController(view).navigate(R.id.action_restaurantFragment_to_menuRestaurantFragment);
-
-
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                switch(item.getItemId()){
+                    case R.id.navigation_home:
+                        setFragment(homeFragment);
+                        return true;
+                    case R.id.navigation_search:
+                        return true;
+                    case R.id.navigation_order:
+                        return true;
+                    case R.id.navigation_account:
+                        return true;
+                    default:
+                        return true;
+                }
             }
         });
-        mBtnOrder.setOnClickListener(this);
-
-
-    }
-    private void showOrders(){
-        Log.d("ddd", "showOrders: ");
-        Intent intent = new Intent(this, ListOrdersActivity.class);
-        startActivity(intent);
-    }
-    private void showMenuRestaurant(){
-        Intent intent = new Intent(this, MenuRestaurantActivity.class);
-        intent.putStringArrayListExtra("name",name);
-        intent.putStringArrayListExtra("price",price);
-        startActivityForResult(intent,3008);
-
-
     }
 
-     @Override
-     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode==3008){
-            if(resultCode==RESULT_OK){
-                name=data.getStringArrayListExtra("retName");
-                price=data.getStringArrayListExtra("retPrice");
-            }
-        }
-         super.onActivityResult(requestCode, resultCode, data);
-
-     }
-
-     @Override
-     public void onClick(View view) {
-        if(view.getId()==R.id.btnOrder){
-
-            showOrders();
-
-        }
-
+    private void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.flContainer, fragment);
+        fragmentTransaction.commit();
     }
-     List<Food> getListFood(){
-         List<Food> list= new ArrayList<>();
-         list.add(new Food("Bún","1000"));
-         list.add(new Food("Cháo","1000"));
-         return list;
-     }
- }
+}

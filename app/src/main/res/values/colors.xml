@@ -11,6 +11,10 @@
     <color name="link_blue">#4d94ff</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimary">#6200EE</color>
+    <color name="colorBlack">#000000</color>
     <color name="colorPrimaryDark">#0000FF</color>
     <color name="greenGrab">#008900</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorOrange">#FFA500</color>
+
 </resources>
