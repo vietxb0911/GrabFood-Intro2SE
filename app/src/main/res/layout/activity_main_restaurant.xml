@@ -10,7 +10,7 @@
         android:id="@+id/btnReturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#009900" android:text="Return">
+        android:backgroundTint="@color/greenGrab" android:text="Return">
 
     </Button>
     <LinearLayout

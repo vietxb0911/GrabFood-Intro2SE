@@ -25,7 +25,7 @@
             android:layout_gravity="center_horizontal"
             android:text="GRAB FOOD"
             android:textAlignment="center"
-            android:textColor="#008900"
+            android:textColor="@color/greenGrab"
             android:textSize="42sp"
             android:textStyle="bold"
             android:layout_marginBottom="40dp"/>
