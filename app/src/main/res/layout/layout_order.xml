@@ -4,36 +4,45 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="13.5dp"
-        android:text="Order ID: "
-        android:textSize="20sp"
-        android:id="@+id/tvID"></TextView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="13.5dp"
-        android:text="Status"
-        android:textSize="20sp"
-        android:id="@+id/tvStatus"></TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="13.5dp"
-        android:text="Time"
-        android:textSize="20sp"
-        android:id="@+id/tvTime"></TextView>
+        android:orientation="vertical"
+        android:id="@+id/llOrder">
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13.5dp"
+            android:text="Order ID: "
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tvID"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13.5dp"
+            android:text="Status"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tvStatus"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13.5dp"
+            android:text="Time"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/tvTime"></TextView>
+
+    </LinearLayout>
 
 </LinearLayout>

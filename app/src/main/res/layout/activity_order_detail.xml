@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Shipper.OrderDetailActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_centerHorizontal="true"
+        tools:srcCompat="@tools:sample/avatars" />
+    <LinearLayout
+        android:id="@+id/order_info"
+        android:layout_width="match_parent"
+        android:layout_margin="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/imageView2">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/customer_name"
+            android:text="Customer: Nguyen Van A"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/delivery_location"
+            android:text="Delivery location: 227 Nguyen Van Cu, Phuong 4, Quan 5"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurant_info"
+            android:text="Restaurant: Banh trang ba bay, 25 Ly Chinh Thang, Phuong 4, Quan 5"
+            android:textSize="20dp"></TextView>
+        <ListView
+            android:id="@+id/order_list"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/delivery_charges"
+            android:text="Delivery charges:  21000 VND"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/total"
+            android:text="Total:  21000 VND"
+            android:textSize="30dp"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_below="@id/order_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Back" />
+
+
+</RelativeLayout>

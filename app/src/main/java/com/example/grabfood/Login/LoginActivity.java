@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.grabfood.Restaurant.MainRestaurantActivity;
+import com.example.grabfood.Shipper.MainShipperActivity;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -263,8 +264,10 @@ public class    LoginActivity extends AppCompatActivity {
         int type = user.getType();
         switch (type){
             case 0:
+                goToCustomerActivity();
                 break;
             case 1:
+                goToShipperActivity();
                 break;
             case 2:
                 goToMainRestaurantActivity();
@@ -276,6 +279,18 @@ public class    LoginActivity extends AppCompatActivity {
 
     private void goToMainRestaurantActivity(){
         Intent intent = new Intent(this, MainRestaurantActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    private void goToShipperActivity(){
+        Intent intent = new Intent(this, MainShipperActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    private void goToCustomerActivity(){
+        Intent intent = new Intent(this, MainShipperActivity.class);
         startActivity(intent);
         this.finish();
     }

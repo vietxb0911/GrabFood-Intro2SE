@@ -81,8 +81,10 @@ public class SignUpActivity extends AppCompatActivity {
         int type = user.getType();
         switch (type){
             case 0:
+                goToMainCustomerActivity();
                 break;
             case 1:
+                goToMainRShipperActivity();
                 break;
             case 2:
                 goToMainRestaurantActivity();
@@ -98,4 +100,15 @@ public class SignUpActivity extends AppCompatActivity {
         this.finish();
     }
 
+    private void goToMainRShipperActivity(){
+        Intent intent = new Intent(this, MainRestaurantActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    private void goToMainCustomerActivity(){
+        Intent intent = new Intent(this, MainRestaurantActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 }

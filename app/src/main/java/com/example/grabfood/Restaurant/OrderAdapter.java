@@ -2,10 +2,12 @@ package com.example.grabfood.Restaurant;
 import com.example.grabfood.R;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +28,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
 
     public static class ViewHolder{
         TextView tvID,tvTime,tvStatus;
+        LinearLayout llOrder;
     }
 
     @NonNull
@@ -38,6 +41,7 @@ public class OrderAdapter extends ArrayAdapter<Order>{
             viewHolder.tvID=(TextView)convertView.findViewById(R.id.tvID);
             viewHolder.tvTime=(TextView)convertView.findViewById(R.id.tvTime);
             viewHolder.tvStatus=(TextView)convertView.findViewById(R.id.tvStatus);
+            viewHolder.llOrder = (LinearLayout) convertView.findViewById(R.id.llOrder);
             convertView.setTag(viewHolder);
         }
         else {
@@ -55,6 +59,24 @@ public class OrderAdapter extends ArrayAdapter<Order>{
         viewHolder.tvTime.setText("Time: "+item.getTime());
         viewHolder.tvID.setText(item.getID());
 
+        String status = item.getStatus();
+        int color;
+        switch (status){
+            case "Delivery":
+                color = Color.parseColor("#800000");
+                break;
+            case "Preparing":
+                color = Color.parseColor("#00FF00");
+                break;
+            case "Completed":
+                color = Color.parseColor("#FFFF00");
+                break;
+            default:
+                color = Color.parseColor("#FFFF00");
+                break;
+        }
+
+        viewHolder.llOrder.setBackgroundColor(color);
     }
 }
 
