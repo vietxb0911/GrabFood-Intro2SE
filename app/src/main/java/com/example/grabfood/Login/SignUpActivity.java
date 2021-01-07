@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.grabfood.Restaurant.MainRestaurantActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -65,18 +66,19 @@ public class SignUpActivity extends AppCompatActivity {
                 String fullname = mFullname.getText().toString();
                 String address = mAddress.getText().toString();
                 int type = btn_group.getPosition();
-                generateUser(phonenumber, password1, address, email, fullname, type);
-                goToMainActivity();
+                User user = generateUser(phonenumber, password1, address, email, fullname, type);
+                goToHomepage(user);
             }
         });
 
 
     }
 
-    public void generateUser(String phonenumber, String password, String address, String email, String fullname, int type) {
+    public User generateUser(String phonenumber, String password, String address, String email, String fullname, int type) {
         User user = new User(phonenumber, password, address, email, fullname, type); //ObjectClass for Users
         mDatabase.child("users").child(phonenumber).setValue(user);
         Log.e(TAG, "User created");
+        return user;
     }
 
 
@@ -85,4 +87,26 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
         this.finish();
     }
+
+    private void goToHomepage(User user){
+        int type = user.getType();
+        switch (type){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                goToMainRestaurantActivity();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void goToMainRestaurantActivity(){
+        Intent intent = new Intent(this, MainRestaurantActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
 }

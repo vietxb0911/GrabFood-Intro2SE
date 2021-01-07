@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.grabfood.Restaurant.MainRestaurantActivity;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -141,7 +142,7 @@ public class    LoginActivity extends AppCompatActivity {
                             String true_password = user.getPassword();
                             if (true_password.equals(password)){
                                 Log.e(TAG, "Log in successsfully");
-                                goToMainActivity();
+                                goToHomepage(user);
                             }
                             else {
                                 Log.e(TAG, "Wrong password");
@@ -197,17 +198,7 @@ public class    LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void goToMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        this.finish();
-    }
 
-    private void goToSignUpActivity(){
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
-        this.finish();
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -256,5 +247,36 @@ public class    LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void goToMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 
+    private void goToSignUpActivity(){
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    private void goToHomepage(User user){
+        int type = user.getType();
+        switch (type){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                goToMainRestaurantActivity();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void goToMainRestaurantActivity(){
+        Intent intent = new Intent(this, MainRestaurantActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoginPage</string>
+    <string name="app_name">Grab Food</string>
     <string name="google_sign_up">Continue With Google</string>
     <string name="facebook_app_id">224121449177257</string>
     <string name="fb_login_protocol_scheme">fb224121449177257</string>
