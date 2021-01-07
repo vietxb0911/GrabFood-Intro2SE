@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "471113988115",
+    "firebase_url": "https://grab-food-41fca-default-rtdb.firebaseio.com",
+    "project_id": "grab-food-41fca",
+    "storage_bucket": "grab-food-41fca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471113988115:android:f18b0101071037a181e7e6",
+        "android_client_info": {
+          "package_name": "com.example.grabfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471113988115-552t4ca40skdjemgqnqcig590tk87rb5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.grabfood",
+            "certificate_hash": "3e286f6fb9b50404991d9f78d30e01b6a6d55f18"
+          }
+        },
+        {
+          "client_id": "471113988115-vsjclmapfom62t9d454q9icao0mpmmde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbVm7rgSOQlNynkr1guvaovygEqlwWSw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471113988115-vsjclmapfom62t9d454q9icao0mpmmde.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
