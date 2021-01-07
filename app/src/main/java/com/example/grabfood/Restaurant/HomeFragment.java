@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
     ArrayList<String> name,price;
 
 
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -95,6 +96,7 @@ public class HomeFragment extends Fragment {
             if(resultCode==getActivity().RESULT_OK){
                 name=data.getStringArrayListExtra("retName");
                 price=data.getStringArrayListExtra("retPrice");
+
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

@@ -22,6 +22,7 @@ public class ListOrdersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_list_orders2);
         lvOrder = (ListView) findViewById(R.id.lvOrder);
 
@@ -34,14 +35,6 @@ public class ListOrdersActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
               //  Navigation.findNavController(view).navigate(R.id.action_listOrdersFragment_to_detailOrderFragment);
             detailOrder();
-            }
-        });
-
-        mBtnReturn = findViewById(R.id.btnBack);
-        mBtnReturn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               returnMainScreen();
             }
         });
 
@@ -59,10 +52,7 @@ public class ListOrdersActivity extends AppCompatActivity {
         Log.d("1", "getListOrder: "+list.size());
         return list;
     }
-    private void returnMainScreen(){
-        Intent intent = new Intent(this, MainRestaurantActivity.class);
-        startActivity(intent);
-    }
+
     private  void detailOrder(){
         Intent intent = new Intent(this,DetailOrderActivity.class);
         startActivity(intent);

@@ -7,17 +7,6 @@
     android:orientation="vertical"
     android:background="#009900">
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Return"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="3dp"
-        android:textColor="#009900"
-        android:backgroundTint="#FFFFFF"
-        tools:layout_editor_absoluteY="5dp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

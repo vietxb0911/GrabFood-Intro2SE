@@ -2,10 +2,12 @@ package com.example.grabfood.Restaurant;
 import com.example.grabfood.R;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,7 @@ public class FoodAdapter extends ArrayAdapter<Food> {
         TextView tvName;
         TextView tvPrice;
         TextView tvCount;
+        ImageView imFood;
     }
 
     @NonNull
@@ -41,6 +44,7 @@ public class FoodAdapter extends ArrayAdapter<Food> {
             viewHolder.tvName=(TextView)convertView.findViewById(R.id.tvName);
             viewHolder.tvPrice=(TextView)convertView.findViewById(R.id.tvPrice);
             viewHolder.tvCount=(TextView)convertView.findViewById(R.id.tvCount);
+            viewHolder.imFood = (ImageView) convertView.findViewById(R.id.imFood);
             convertView.setTag(viewHolder);
         }
         else {
@@ -55,5 +59,6 @@ public class FoodAdapter extends ArrayAdapter<Food> {
         viewHolder.tvName.setText(item.name);
         viewHolder.tvPrice.setText(item.price+" VND");
         viewHolder.tvCount.setText(item.count);
+        viewHolder.imFood.setImageBitmap(item.getBitmap());
     }
 }

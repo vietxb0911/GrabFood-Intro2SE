@@ -9,7 +9,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/imFood"
-        android:src="@drawable/food"
+        android:src="@drawable/nullimage"
         tools:ignore="MissingConstraints">
 
     </ImageView>
