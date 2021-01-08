@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.grabfood.Shipper.MapsFragment"
+        android:name="com.example.grabfood.Helper.MapsFragment"
         android:layout_below="@+id/rl_temp"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"

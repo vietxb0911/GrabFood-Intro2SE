@@ -12,7 +12,6 @@ import android.widget.FrameLayout;
 import com.example.grabfood.Helper.AccountFragment;
 import com.example.grabfood.Helper.OrderFragment;
 import com.example.grabfood.R;
-import com.example.grabfood.Restaurant.RestaurantHomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainCustomerActivity extends AppCompatActivity {

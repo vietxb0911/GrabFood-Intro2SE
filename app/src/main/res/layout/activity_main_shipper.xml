@@ -81,13 +81,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigationView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         app:itemIconTint="@color/colorBlack"
         app:itemTextColor="@color/colorBlack"
-        app:menu="@menu/navigation"/>
+        app:menu="@menu/navigation2"/>
 
 
 </RelativeLayout>
