@@ -25,7 +25,7 @@ public class FoodAdapter extends ArrayAdapter<Food> {
         super(context,0,mFoods);
     }
 
-
+    //Food, FoodAdapter, Menu, Manifest
 
     public static class ViewHolder{
         TextView tvName;
@@ -59,6 +59,9 @@ public class FoodAdapter extends ArrayAdapter<Food> {
         viewHolder.tvName.setText(item.name);
         viewHolder.tvPrice.setText(item.price+" VND");
         viewHolder.tvCount.setText(item.count);
-        viewHolder.imFood.setImageBitmap(item.getBitmap());
+        //viewHolder.imFood.setImageBitmap(item.getBitmap());
+        if(item.uri!=null) {
+            viewHolder.imFood.setImageURI(item.uri);
+        }
     }
 }

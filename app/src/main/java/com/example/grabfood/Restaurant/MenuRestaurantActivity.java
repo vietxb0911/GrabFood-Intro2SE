@@ -1,15 +1,18 @@
 package com.example.grabfood.Restaurant;
 import com.example.grabfood.R;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -23,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,45 +40,46 @@ public class MenuRestaurantActivity extends AppCompatActivity {
     ListView listView;
     FoodAdapter foodAdapter;
     List<Food> mFoods;
-    Dialog dialog;
-
-    private int  REQUEST_UPLOAD_FOOD_PHOTO = 1;
-    private int  REQUEST_IMAGE_CAPTURE = 2;
+    ImageView mImageView;
+    ImageView imageView;
+    Uri uri_image;
+    private Button btnReturn,btnAdd;
+    private static final int PERMISSION_CODE=1000;
+    private int IMAGE_CAPTURE_CODE=1001;
 
     private String TAG  = "MenuRestaurantActivity";
 
-    private Button btnAdd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_menu_restaurant);
 
-    btnAdd=(Button)findViewById(R.id.btnAddFood);
-    listView = findViewById(R.id.lvFood);
-    getListFood();
+        btnAdd=(Button)findViewById(R.id.btnAddFood);
+        listView = findViewById(R.id.lvFood);
+        getListFood();
 
 
-    foodAdapter = new FoodAdapter(this,mFoods);
+        foodAdapter = new FoodAdapter(this,mFoods);
         listView.setAdapter(foodAdapter);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            DialogChangeLayout();
-        }
-    });
+            @Override
+            public void onClick(View view) {
+                DialogChangeLayout();
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            update(mFoods,i);
-        }
-    });
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                update(mFoods,i);
+            }
+        });
 
 
 
 
-}
+    }
 
     private void update(List<Food> mFoods, int i) {
         final Dialog dialog = new Dialog(this);
@@ -85,18 +90,20 @@ public class MenuRestaurantActivity extends AppCompatActivity {
         EditText edName,edPrice;
 
         Button btnDone,btnBack;
-        ImageView ivFood;
+        //ImageView ivFood;
         Food food = mFoods.get(i);
         btnDone = (Button)dialog.findViewById(R.id.btnDone);
         btnBack = (Button)dialog.findViewById(R.id.btnCancel);
-        ivFood = (ImageView)dialog.findViewById(R.id.imFood);
+        // ivFood = (ImageView)dialog.findViewById(R.id.imFood);
 
         btnBack.setText("DELETE");
         edName = (EditText)dialog.findViewById(R.id.edName);
         edPrice =(EditText)dialog.findViewById(R.id.edPrice);
         edName.setText(food.name);
         edPrice.setText(food.price);
-        ivFood.setImageBitmap(food.getBitmap());
+        //  ivFood.setImageBitmap(food.getBitmap());
+        mImageView=(ImageView)dialog.findViewById(R.id.edBitmap);
+        mImageView.setImageURI(food.uri);
         btnDone.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -134,7 +141,7 @@ public class MenuRestaurantActivity extends AppCompatActivity {
         }
     }
     private void DialogChangeLayout(){
-        dialog = new Dialog(this);
+        final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_PROGRESS);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.layout_add_food);
@@ -142,7 +149,7 @@ public class MenuRestaurantActivity extends AppCompatActivity {
 
 
         EditText edName,edPrice;
-        ImageView edBitmap;
+        mImageView=(ImageView)dialog.findViewById(R.id.edBitmap);
         ImageButton btnUpload, btnCamera;
         Button btnDone,btnBack;
 
@@ -153,7 +160,7 @@ public class MenuRestaurantActivity extends AppCompatActivity {
         btnBack = (Button)dialog.findViewById(R.id.btnCancel);
         edName = (EditText)dialog.findViewById(R.id.edName);
         edPrice =(EditText)dialog.findViewById(R.id.edPrice);
-        edBitmap = (ImageView) dialog.findViewById(R.id.edBitmap);
+
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,12 +169,7 @@ public class MenuRestaurantActivity extends AppCompatActivity {
             }
         });
 
-        btnCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takePictureIntent();
-            }
-        });
+
 
 
         btnDone.setOnClickListener(new View.OnClickListener(){
@@ -183,14 +185,20 @@ public class MenuRestaurantActivity extends AppCompatActivity {
                 }
                 else {
                     dialog.cancel();
-                    BitmapDrawable drawable = (BitmapDrawable) edBitmap.getDrawable();
-                    Bitmap bitmap = drawable.getBitmap();
-                    Food food = new Food(edName.getText().toString(),edPrice.getText().toString(), bitmap);
+                    Food food = new Food(edName.getText().toString(),edPrice.getText().toString(), uri_image);
+                    uri_image=null;
                     mFoods.add(food);
                     foodAdapter.notifyDataSetChanged();
 
                 }
 
+            }
+        });
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=(ImageView)dialog.findViewById(R.id.edBitmap);
+                ShowCamera();
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -211,48 +219,46 @@ public class MenuRestaurantActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, REQUEST_UPLOAD_FOOD_PHOTO);
+        startActivityForResult(intent, 1);
     }
 
-    private void takePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        try {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            Log.e(TAG, "takePictureIntent: successfully");
-        } catch (ActivityNotFoundException e) {
-            // display error state to the user
-            e.printStackTrace();
+    void ShowCamera(){
+        //Intent intent = new Intent(this,Camera.class);
+        //startActivityForResult(intent,1008);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if(checkSelfPermission(Manifest.permission.CAMERA)==
+                    PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+                            PackageManager.PERMISSION_DENIED){
+                String[] permission = {Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permission,PERMISSION_CODE);
+            }
+            else {
+                openCamera();
+            }
+        }
+        else
+        {
+            openCamera();
         }
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_UPLOAD_FOOD_PHOTO && data!=null){
-            Uri selectedImage = data.getData();
-
-            InputStream inputStream = null;
-            try {
-                inputStream = getContentResolver().openInputStream(selectedImage);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            ImageView ivFood = (ImageView) dialog.findViewById(R.id.edBitmap);
-            ivFood.setImageBitmap(bitmap);
-            Log.e(TAG, "Image received");
-        }
-
-        if (requestCode == REQUEST_IMAGE_CAPTURE && data!=null){
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            ImageView ivFood;
-            ivFood = (ImageView) dialog.findViewById(R.id.edBitmap);
-            ivFood.setImageBitmap(imageBitmap);
+        if (resultCode == RESULT_OK) {
+            mImageView.setImageURI(uri_image);
         }
     }
-
+    private void openCamera() {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE,"New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION,"From the Camera");
+        uri_image = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,values );
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,uri_image);
+        startActivityForResult(cameraIntent,IMAGE_CAPTURE_CODE);
+    }
     @Override
     public void onBackPressed() {
         ArrayList<String>name,price;
@@ -268,5 +274,19 @@ public class MenuRestaurantActivity extends AppCompatActivity {
         intent.putStringArrayListExtra("retPrice",price);
         setResult(RESULT_OK,intent);
         finish();
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case PERMISSION_CODE:{
+                if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    openCamera();
+                }
+                else {
+                    Toast.makeText(this,"Permission Denied...",Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
     }
 }

@@ -37,6 +37,7 @@ import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 
 public class OrderFragment extends Fragment {
@@ -80,9 +81,11 @@ public class OrderFragment extends Fragment {
         Timer = new CountDownTimer(11000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.e(TAG, "Tick");
-                SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
-                String time = df.format(millisUntilFinished/1000);
+                String time = String.format("%02dm%02ds",
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+                Log.e(TAG, time);
 //                String time = String.valueOf(millisUntilFinished/1000);
                 edtTime.setText("Expected Time Arrival: " + time);
             }

@@ -1,12 +1,14 @@
 package com.example.grabfood.Restaurant;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 public class Food {
     String name;
     String price;
     String count;
     Bitmap bitmap;
+    Uri uri;
 
     public Food(String name, String price,String count, Bitmap bitmap) {
         this.name = name;
@@ -14,6 +16,12 @@ public class Food {
         this.count=count;
         this.bitmap = bitmap;
     }
+    public Food(String name,String price,Uri uri){
+        this.name=name;
+        this.price=price;
+        this.uri=uri;
+    }
+
 
     public Food(String name, String price,String count) {
         this.name = name;

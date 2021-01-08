@@ -40,7 +40,6 @@
         <activity android:name=".Restaurant.ListOrdersActivity" />
         <activity android:name=".Shipper.OrderDetailActivity" />
         <activity android:name=".Customer.MainCustomerActivity2" />
-        <activity android:name=".Customer.MainCustomerActivity_" />
         <activity android:name=".Customer.OrderActivity" />
         <activity android:name=".Customer.PaymentActivity" />
         <activity android:name=".Customer.ReviewActivity" />
