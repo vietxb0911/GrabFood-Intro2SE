@@ -18,6 +18,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 
 public class MapsFragment extends Fragment {
@@ -49,6 +51,7 @@ public class MapsFragment extends Fragment {
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(res_addr, 16));
             LatLng cus_addr = new LatLng(10.7625383,106.6793707);
             cus_marker = googleMap.addMarker(new MarkerOptions().position(cus_addr).title("Marker in Customer"));
+//            setPolylines(res_addr, cus_addr);
         }
     };
 
@@ -69,6 +72,26 @@ public class MapsFragment extends Fragment {
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
+    }
+
+
+
+    public void setPolylines(LatLng coor1, LatLng coor2)
+    {
+        if (marker != null)
+            marker.remove();
+        Log.d("@@@@", "check marker");
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        Log.d("@@@@", "init map fragment");
+        mapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                Polyline polyline1 = googleMap.addPolyline(new PolylineOptions()
+                        .clickable(true)
+                        .add(coor1, coor2));
+            }
+        });
     }
 
     public void setMarker(LocationResult locationResult)

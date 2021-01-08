@@ -281,18 +281,18 @@ public class    LoginActivity extends AppCompatActivity {
     private void goToMainRestaurantActivity(){
         Intent intent = new Intent(this, MainRestaurantActivity.class);
         startActivity(intent);
-        this.finish();
+//        this.finish();
     }
 
     private void goToShipperActivity(){
         Intent intent = new Intent(this, MainShipperActivity.class);
         startActivity(intent);
-        this.finish();
+//        this.finish();
     }
 
     private void goToCustomerActivity(){
         Intent intent = new Intent(this, MainCustomerActivity.class);
         startActivity(intent);
-        this.finish();
+//        this.finish();
     }
 }

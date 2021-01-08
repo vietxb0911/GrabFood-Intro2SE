@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.grabfood">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -14,10 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GrabFood">
+        <activity android:name=".Shipper.MainShipperActivity"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".Restaurant.MainRestaurantActivity"></activity>
+
+        <activity android:name=".Restaurant.MainRestaurantActivity" />
         <activity
             android:name=".Login.SplashScreenActivity"
             android:theme="@style/SplashScreen">
@@ -33,13 +37,11 @@
         <activity android:name=".Restaurant.DetailOrderActivity" />
         <activity android:name=".Restaurant.MenuRestaurantActivity" />
         <activity android:name=".Restaurant.ListOrdersActivity" />
-        <activity android:name=".Shipper.MainShipperActivity"/>
-        <activity android:name=".Shipper.OrderDetailActivity"/>
-        <activity android:name=".Customer.MainCustomerActivity"/>
-        <activity android:name=".Customer.OrderActivity"/>
-        <activity android:name=".Customer.PaymentActivity"/>
-        <activity android:name=".Customer.ReviewActivity"/>
-
+        <activity android:name=".Shipper.OrderDetailActivity" />
+        <activity android:name=".Customer.MainCustomerActivity" />
+        <activity android:name=".Customer.OrderActivity" />
+        <activity android:name=".Customer.PaymentActivity" />
+        <activity android:name=".Customer.ReviewActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -61,8 +63,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class HomeFragment extends Fragment {
+public class RestaurantHomeFragment extends Fragment {
 
     private String TAG = "HomeFragment";
     Context mContext;
@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
 
 
 
-    public HomeFragment() {
+    public RestaurantHomeFragment() {
         // Required empty public constructor
     }
 

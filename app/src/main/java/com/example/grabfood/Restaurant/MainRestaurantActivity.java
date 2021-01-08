@@ -16,7 +16,7 @@ public class MainRestaurantActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
 
-    private HomeFragment homeFragment;
+    private RestaurantHomeFragment homeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class MainRestaurantActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_restaurant);
 
-        homeFragment = new HomeFragment();
+        homeFragment = new RestaurantHomeFragment();
 
         setFragment(homeFragment);
 

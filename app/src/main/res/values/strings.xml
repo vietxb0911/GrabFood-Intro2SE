@@ -4,7 +4,7 @@
     <string name="facebook_app_id">224121449177257</string>
     <string name="fb_login_protocol_scheme">fb224121449177257</string>
 
-<!--    Shipper-->
+    <!--    Shipper-->
     <string name="title_activity_maps">Map</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

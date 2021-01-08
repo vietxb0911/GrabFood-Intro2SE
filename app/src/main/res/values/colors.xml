@@ -16,5 +16,8 @@
     <color name="greenGrab">#008900</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorOrange">#FFA500</color>
-
+    <color name="moonlightYellow">#f6cd61</color>
+    <color name="metroRed">#d11141</color>
+    <color name="metroGreen">#00b159</color>
+    <color name="metroYellow">#ffc425</color>
 </resources>
