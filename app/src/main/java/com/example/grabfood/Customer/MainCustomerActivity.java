@@ -1,40 +1,28 @@
 package com.example.grabfood.Customer;
-import com.example.grabfood.R;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.grabfood.Customer.category_rcv_x2.Category;
-import com.example.grabfood.Customer.category_rcv_x2.CategoryAdapter;
-import com.example.grabfood.Customer.viewpager.Photo;
-import com.example.grabfood.Customer.viewpager.PhotoAdapter;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import me.relex.circleindicator.CircleIndicator;
-
-import static com.example.grabfood.Customer.category_rcv_x2.Category.getListCategory;
+import com.example.grabfood.Helper.AccountFragment;
+import com.example.grabfood.Helper.OrderFragment;
+import com.example.grabfood.R;
+import com.example.grabfood.Restaurant.RestaurantHomeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainCustomerActivity extends AppCompatActivity {
-    private ViewPager viewPager;
-    private CircleIndicator circleIndicator;
-    private PhotoAdapter photoAdapter;
-    private List<Photo> mListPhoto;
-    private Timer mTimer;
-    private ArrayList<Category> listCategory;
 
-    private RecyclerView rcvCategory;
-    private CategoryAdapter categoryAdapter;
+    private BottomNavigationView bottomNavigationView;
+    private FrameLayout frameLayout;
 
+    private UserHomeFragment homeFragment;
+    private AccountFragment accountFragment;
+    private OrderFragment orderFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,91 +30,40 @@ public class MainCustomerActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_customer);
 
-        buildViewPager();
-        buildRecycleView();
+        homeFragment = new UserHomeFragment();
+        accountFragment = new AccountFragment();
+        orderFragment = new OrderFragment();
 
-    }
+        setFragment(homeFragment);
 
-    private void buildViewPager() {
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        circleIndicator = (CircleIndicator) findViewById(R.id.circle_indicator);
-
-        mListPhoto = getListPhoto();
-        photoAdapter = new PhotoAdapter(this, mListPhoto);
-        viewPager.setAdapter(photoAdapter);
-
-        circleIndicator.setViewPager(viewPager);
-        photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
-
-        autoSlideImage();
-    }
-
-    private List<Photo> getListPhoto() {
-        List<Photo> list = new ArrayList<>();
-        list.add(new Photo(R.drawable.bg_restaurant_1));
-        list.add(new Photo(R.drawable.bg_restaurant_2));
-        list.add(new Photo(R.drawable.bg_restaurant_3));
-        list.add(new Photo(R.drawable.bg_restaurant_4));
-
-        return list;
-    }
-
-    private void autoSlideImage(){
-        if(mListPhoto == null || mListPhoto.isEmpty() || viewPager==null) return;
-
-        //Init timer
-        if (mTimer==null){
-            mTimer = new Timer();
-        }
-        mTimer.schedule(new TimerTask() {
+        frameLayout = (FrameLayout) findViewById(R.id.flContainer);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void run() {
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        int currentItem = viewPager.getCurrentItem();
-                        int totalItem = mListPhoto.size() - 1;
-                        if(currentItem < totalItem){
-                            currentItem++;
-                            viewPager.setCurrentItem(currentItem);
-                        }
-                        else
-                            viewPager.setCurrentItem(0);
-                    }
-                });
-            }
-        },500,3000);
-    }
-
-    void buildRecycleView(){
-        rcvCategory = (RecyclerView) findViewById(R.id.rcv_category);
-        categoryAdapter = new CategoryAdapter(this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
-        rcvCategory.setLayoutManager(linearLayoutManager);
-        listCategory = getListCategory();
-        categoryAdapter.setData(listCategory);
-        rcvCategory.setAdapter(categoryAdapter);
-
-        categoryAdapter.setOnItemClickListener(new CategoryAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Category category=listCategory.get(position);
-
-                //Toast.makeText(getBaseContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainCustomerActivity.this, Activity_restaurant_info.class);
-                intent.putExtra("restaurantID",position);
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
+                switch(item.getItemId()){
+                    case R.id.navigation_home:
+                        setFragment(homeFragment);
+                        return true;
+                    case R.id.navigation_search:
+                        return true;
+                    case R.id.navigation_order:
+                        setFragment(orderFragment);
+                        return true;
+                    case R.id.navigation_account:
+                        setFragment(accountFragment);
+                        return true;
+                    default:
+                        return true;
+                }
             }
         });
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mTimer!=null){
-            mTimer.cancel();
-            mTimer=null;
-        }
-        finishAndRemoveTask();
+    private void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.flContainer, fragment);
+        fragmentTransaction.commit();
     }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Helper.AccountFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rela"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/sde">
+
+                <ImageView
+                    android:id="@+id/imgAccount"
+                    android:layout_width="115dp"
+                    android:layout_height="77dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/offline" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/accountList"
+                android:layout_width="match_parent"
+                android:layout_height="337dp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

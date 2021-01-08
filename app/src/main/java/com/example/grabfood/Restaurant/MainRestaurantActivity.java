@@ -1,4 +1,6 @@
 package com.example.grabfood.Restaurant;
+import com.example.grabfood.Helper.AccountFragment;
+import com.example.grabfood.Helper.OrderFragment;
 import com.example.grabfood.R;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,8 @@ public class MainRestaurantActivity extends AppCompatActivity {
     private FrameLayout frameLayout;
 
     private RestaurantHomeFragment homeFragment;
+    private AccountFragment accountFragment;
+    private OrderFragment orderFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,8 @@ public class MainRestaurantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_restaurant);
 
         homeFragment = new RestaurantHomeFragment();
+        accountFragment = new AccountFragment();
+        orderFragment = new OrderFragment();
 
         setFragment(homeFragment);
 
@@ -41,8 +47,10 @@ public class MainRestaurantActivity extends AppCompatActivity {
                     case R.id.navigation_search:
                         return true;
                     case R.id.navigation_order:
+                        setFragment(orderFragment);
                         return true;
                     case R.id.navigation_account:
+                        setFragment(accountFragment);
                         return true;
                     default:
                         return true;

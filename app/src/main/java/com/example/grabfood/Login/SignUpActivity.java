@@ -1,6 +1,6 @@
 package com.example.grabfood.Login;
 import com.example.grabfood.Customer.MainCustomerActivity;
-import com.example.grabfood.Customer.MainCustomerActivity2;
+import com.example.grabfood.Customer.MainCustomerActivity_;
 import com.example.grabfood.Helper.User;
 import com.example.grabfood.MainActivity;
 import com.example.grabfood.R;

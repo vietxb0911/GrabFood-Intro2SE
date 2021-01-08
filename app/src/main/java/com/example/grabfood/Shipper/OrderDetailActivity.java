@@ -18,12 +18,23 @@ import java.util.ArrayList;
 public class OrderDetailActivity extends AppCompatActivity {
 
     private Button button;
+    private Button backBtn;
     private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_order_detail);
+
+        backBtn = (Button) findViewById(R.id.backButton);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
         initOrderList();
         initStatusButton();
     }
