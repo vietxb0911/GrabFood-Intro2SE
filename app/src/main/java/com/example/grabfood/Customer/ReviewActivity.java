@@ -3,6 +3,7 @@ package com.example.grabfood.Customer;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -27,7 +28,7 @@ public class ReviewActivity extends AppCompatActivity {
         ImageButton order_rate_btn = (ImageButton) findViewById(R.id.ord);
         ImageButton shipper_rate_btn = (ImageButton) findViewById(R.id.shipper);
         ImageButton restaurant_rate_btn = (ImageButton) findViewById(R.id.res);
-
+        Button proceed_btn = (Button) findViewById(R.id.proceedBtn);
         order_rate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +140,13 @@ public class ReviewActivity extends AppCompatActivity {
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            }
+        });
+
+        proceed_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

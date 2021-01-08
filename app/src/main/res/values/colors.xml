@@ -23,4 +23,8 @@
     <color name="metroOrange">#f37735</color>
     <color name="yellow">#FFEB3B</color>
     <color name="green">#54DA1A</color>
+    <color name="catalogYellow">#edc951</color>
+    <color name="catalogRed">#cc2a36</color>
+    <color name="catalogBlue">#00a0b0</color>
+    <color name="officeWhite">#f8fbff</color>
 </resources>

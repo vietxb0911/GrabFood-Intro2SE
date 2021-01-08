@@ -2,9 +2,12 @@ package com.example.grabfood.Helper;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.PermissionChecker;
 import androidx.fragment.app.Fragment;
@@ -15,9 +18,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.grabfood.Customer.ReviewActivity;
 import com.example.grabfood.Helper.MapsFragment;
 import com.example.grabfood.R;
 import com.example.grabfood.Shipper.OrderDetailActivity;
@@ -72,24 +77,45 @@ public class OrderFragment extends Fragment {
         callPermission();
 
         TextView edtTime = (TextView) view.findViewById(R.id.etaShipper);
-        Timer = new CountDownTimer(62014,1000) {
+        Timer = new CountDownTimer(11000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 Log.e(TAG, "Tick");
                 SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
-                String time = df.format(millisUntilFinished);
+                String time = df.format(millisUntilFinished/1000);
+//                String time = String.valueOf(millisUntilFinished/1000);
                 edtTime.setText("Expected Time Arrival: " + time);
             }
 
             @Override
             public void onFinish() {
+
                 edtTime.setText("Arrived!");
+                initDialog();
             }
         };
         Timer.start();
 
         return view;
     }
+
+    private void initDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle("Please rate");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        goToRatingActivity();
+                    }
+                });
+        alertDialog.show();
+    }
+
+    private void goToRatingActivity() {
+        Intent intent = new Intent(getActivity(), ReviewActivity.class);
+        startActivity(intent);
+    }
+
 
     private void requestLocationUpdate(){
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
