@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 
 import com.example.grabfood.R;
@@ -49,14 +52,27 @@ public class MainShipperActivity extends AppCompatActivity {
             }
         });
 
+        ProgressBar pb = (ProgressBar) findViewById(R.id.pb);
+
+
+
         radioBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                args.putInt("flag", 1);
-                homeFragment = new ShipperHomeFragment();
-                homeFragment.setArguments(args);
-                setFragment(homeFragment);
-                Log.e(TAG, "onCreate: radioBtn1 Clicked");
+                pb.setVisibility(View.VISIBLE);
+
+                final Handler handler = new Handler();
+                final Runnable r = new Runnable() {
+                    public void run() {
+                        args.putInt("flag", 1);
+                        homeFragment = new ShipperHomeFragment();
+                        homeFragment.setArguments(args);
+                        setFragment(homeFragment);
+                        pb.setVisibility(View.GONE);
+                        Log.e(TAG, "onCreate: radioBtn1 Clicked");
+                    }
+                };
+                handler.postDelayed(r,3000);
             }
         });
 

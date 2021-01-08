@@ -8,15 +8,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/mcdonald"
         android:layout_centerHorizontal="true"
         tools:srcCompat="@tools:sample/avatars" />
     <LinearLayout
         android:id="@+id/order_info"
         android:layout_width="match_parent"
-        android:layout_margin="30dp"
+        android:layout_margin="15dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/imageView2">
@@ -43,6 +44,7 @@
         <ListView
             android:id="@+id/order_list"
             android:layout_margin="20dp"
+            android:background="@drawable/customroundedborder"
             android:layout_width="match_parent"
             android:layout_height="150dp" />
         <TextView
@@ -55,16 +57,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/total"
+            android:textStyle="bold"
             android:text="Total:  21000 VND"
             android:textSize="30dp"/>
     </LinearLayout>
 
-    <Button
-        android:layout_below="@id/order_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Back" />
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/order_info"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:background="@color/metroOrange"
+            android:layout_margin="20dp"
+            android:text="Back"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:background="@color/metroRed"
+            android:text="Cancel"/>
+    </LinearLayout>
 
 
 </RelativeLayout>
