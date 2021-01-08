@@ -21,4 +21,6 @@
     <color name="metroGreen">#00b159</color>
     <color name="metroYellow">#ffc425</color>
     <color name="metroOrange">#f37735</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="green">#54DA1A</color>
 </resources>

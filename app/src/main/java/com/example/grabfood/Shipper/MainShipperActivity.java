@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
