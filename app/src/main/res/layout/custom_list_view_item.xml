@@ -43,20 +43,16 @@
                     android:text="15.000đ"
                     android:gravity="bottom"
                     />
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tv_count_item"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    >
-<!--                    <androidx.appcompat.widget.AppCompatButton-->
-<!--                        android:id="@+id/btn_Add_Item"-->
-<!--                        android:layout_width="40dp"-->
-<!--                        android:layout_height="40dp"-->
-<!--                        android:layout_gravity="right"-->
-<!--                        android:background="@drawable/plus"-->
-<!--                        android:backgroundTint="#009900" />-->
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text=""
+                    android:textColor="@color/radio_flat_text_selector"
+                    android:gravity="right"
+                    android:layout_marginRight="20dp"
+                    />
 
             </LinearLayout>
 

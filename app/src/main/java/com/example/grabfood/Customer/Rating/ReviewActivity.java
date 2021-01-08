@@ -1,4 +1,4 @@
-package com.example.grabfood.Customer;
+package com.example.grabfood.Customer.Rating;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -21,6 +21,7 @@ public class ReviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_review);
 
         setTitle("Review");

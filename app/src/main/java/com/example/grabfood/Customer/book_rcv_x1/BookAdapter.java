@@ -35,7 +35,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         }
         holder.imgBook.setImageResource(book.getResourcId());
         holder.tvName.setText(book.getName());
-        holder.tvPrice.setText(book.getPrice());
+        holder.tvPrice.setText(String.valueOf(Integer.valueOf(book.getPrice()).intValue()/1000)+".000đ");
 
     }
 

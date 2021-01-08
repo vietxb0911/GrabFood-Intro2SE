@@ -18,25 +18,25 @@ public class Category {
         allRestaurant = new ArrayList<>();
 
         ArrayList<Book> listBook = new ArrayList<>();
-        listBook.add(new Book(R.drawable.item_tscc,"Trà sữa trân châu","20.000đ"));
-        listBook.add(new Book(R.drawable.item_mcdx,"Matcha đá xay","30.000đ"));
-        listBook.add(new Book(R.drawable.item_stcc,"Sữa tươi trân châu đường đen","25.000đ"));
-        listBook.add(new Book(R.drawable.item_tstx,"Trà sữa thái xanh","25.000đ"));
-        listBook.add(new Book(R.drawable.item_tscc,"Trà sữa trân châu","20.000đ"));
-        listBook.add(new Book(R.drawable.item_mcdx,"Matcha đá xay","30.000đ"));
-        listBook.add(new Book(R.drawable.item_stcc,"Sữa tươi trân châu đường đen","25.000đ"));
-        listBook.add(new Book(R.drawable.item_tstx,"Trà sữa thái xanh","25.000đ"));
+        listBook.add(new Book(R.drawable.item_tscc,"Trà sữa trân châu","20000"));
+        listBook.add(new Book(R.drawable.item_mcdx,"Matcha đá xay","30000"));
+        listBook.add(new Book(R.drawable.item_stcc,"Sữa tươi trân châu đường đen","25000"));
+        listBook.add(new Book(R.drawable.item_tstx,"Trà sữa thái xanh","25000"));
+        listBook.add(new Book(R.drawable.item_tscc,"Trà sữa trân châu","20000"));
+        listBook.add(new Book(R.drawable.item_mcdx,"Matcha đá xay","30000"));
+        listBook.add(new Book(R.drawable.item_stcc,"Sữa tươi trân châu đường đen","25000"));
+        listBook.add(new Book(R.drawable.item_tstx,"Trà sữa thái xanh","25000"));
 
         ArrayList<Book> listBook2 = new ArrayList<>();
 
-        listBook2.add(new Book(R.drawable.item_stcc,"Sữa tươi trân châu đường đen","25.000đ"));
-        listBook2.add(new Book(R.drawable.item_tstx,"Trà sữa thái xanh","25.000đ"));
-        listBook2.add(new Book(R.drawable.item_tscc,"Trà sữa trân châu","20.000đ"));
-        listBook2.add(new Book(R.drawable.item_mcdx,"Matcha đá xay","30.000đ"));
-        listBook2.add(new Book(R.drawable.item_stcc,"Sữa tươi trân châu đường đen","25.000đ"));
-        listBook2.add(new Book(R.drawable.item_tstx,"Trà sữa thái xanh","25.000đ"));
-        listBook2.add(new Book(R.drawable.item_tscc,"Trà sữa trân châu","20.000đ"));
-        listBook2.add(new Book(R.drawable.item_mcdx,"Matcha đá xay","30.000đ"));
+        listBook2.add(new Book(R.drawable.item_stcc,"Sữa tươi trân châu đường đen","25000"));
+        listBook2.add(new Book(R.drawable.item_tstx,"Trà sữa thái xanh","25000"));
+        listBook2.add(new Book(R.drawable.item_tscc,"Trà sữa trân châu","20000"));
+        listBook2.add(new Book(R.drawable.item_mcdx,"Matcha đá xay","30000"));
+        listBook2.add(new Book(R.drawable.item_stcc,"Sữa tươi trân châu đường đen","25000"));
+        listBook2.add(new Book(R.drawable.item_tstx,"Trà sữa thái xanh","25000"));
+        listBook2.add(new Book(R.drawable.item_tscc,"Trà sữa trân châu","20000"));
+        listBook2.add(new Book(R.drawable.item_mcdx,"Matcha đá xay","30000"));
 
         allRestaurant.add(new Category(R.drawable.bg_restaurant_1,"Trà sữa Tocotoco",listBook));
         allRestaurant.add(new Category(R.drawable.bg_restaurant_2,"Trà sữa BonBon",listBook2));

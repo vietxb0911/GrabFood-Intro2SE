@@ -36,9 +36,17 @@ public class CustomAdapterListBook extends ArrayAdapter<Book> {
         ImageView imgItem = rowItem.findViewById(R.id.img_item);
         TextView tvItemName = rowItem.findViewById(R.id.tv_name_item);
         TextView tvItemPrice = rowItem.findViewById(R.id.tv_price_item);
+        TextView tvItemCount =  rowItem.findViewById(R.id.tv_count_item);
+
         imgItem.setImageResource(books.get(position).getResourcId());
         tvItemName.setText(books.get(position).getName());
-        tvItemPrice.setText(books.get(position).getPrice());
+        tvItemPrice.setText(String.valueOf(Integer.valueOf(books.get(position).getPrice()).intValue()/1000)+".000đ");
+        if(books.get(position).getCount()==0) {
+            tvItemCount.setText("");
+        }
+        else
+            tvItemCount.setText("x"+String.valueOf(books.get(position).getCount()));
+
 
         return rowItem;
     }

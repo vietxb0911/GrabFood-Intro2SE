@@ -65,4 +65,11 @@ public class MainCustomerActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.flContainer, fragment);
         fragmentTransaction.commit();
     }
+
+    public void setOrderFragment() {
+        if (orderFragment == null) {
+            orderFragment = new OrderFragment();
+        }
+        setFragment(orderFragment);
+    }
 }

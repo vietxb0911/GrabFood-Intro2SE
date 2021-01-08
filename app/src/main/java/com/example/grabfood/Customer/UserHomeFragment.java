@@ -3,6 +3,7 @@ package com.example.grabfood.Customer;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +32,8 @@ import me.relex.circleindicator.CircleIndicator;
 import static com.example.grabfood.Customer.category_rcv_x2.Category.getListCategory;
 
 public class UserHomeFragment extends Fragment {
-
+    private String TAG = "UserHomeFragment";
+    private int REQUEST_CODE_CHECKOUT = 123;
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
     private PhotoAdapter photoAdapter;
@@ -129,7 +132,7 @@ public class UserHomeFragment extends Fragment {
                 //Toast.makeText(getBaseContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), Activity_restaurant_info.class);
                 intent.putExtra("restaurantID",position);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_CHECKOUT);
             }
         });
     }
@@ -145,4 +148,12 @@ public class UserHomeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_CHECKOUT && requestCode == getActivity().RESULT_OK){
+            Log.e(TAG, "onActivityResult: OK");
+            ((MainCustomerActivity) getActivity()).setOrderFragment();
+        }
+    }
 }
