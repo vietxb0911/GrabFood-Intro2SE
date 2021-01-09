@@ -31,20 +31,20 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="36dp"
-            android:layout_height="45dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:textSize="60px"
             android:textAlignment="center"
-            android:text="Completion rate" />
+            android:text="Mức độ\n hoàn thành" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:textSize="60px"
             android:textAlignment="center"
-            android:text="Rating" />
+            android:text="Đánh giá\n trung bình" />
 
     </LinearLayout>
     <LinearLayout

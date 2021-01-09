@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:text="Expected Time Arrival:"
+                android:text="Thời gian dự kiến:"
                 android:id="@+id/etaShipper">
             </TextView>
 
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:text="Total fee: 60000">
+                android:text="Tổng tiền: 60000 VNĐ">
             </TextView>
         </LinearLayout>
 
@@ -109,17 +109,17 @@
                 android:textSize="20sp"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:background="@color/metroGreen"
-                android:text="Call"/>
+                android:text="GỌI"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/changeDestinationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:background="@color/metroYellow"
-                android:text="Change\n Destination"/>
+                android:text="ĐỔI ĐỊA\n ĐIỂM NHẬN"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/orderButton"
@@ -129,7 +129,7 @@
                 android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:background="@color/metroRed"
-                android:text="Cancel"/>
+                android:text="HỦY"/>
         </LinearLayout>
 
     </RelativeLayout>

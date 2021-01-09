@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold|italic"
-            android:text="Restaurant:"
+            android:text="Nhà hàng:"
             android:textSize="30dp" />
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold|italic"
-            android:text="Destination:"
+            android:text="Địa điểm đến:"
             android:textSize="30dp" />
 
         <TextView
@@ -81,7 +81,7 @@
             android:textSize="25sp"
             style="@style/Widget.AppCompat.Button.Colored"
             android:background="@color/metroGreen"
-            android:text="Call"/>
+            android:text="GỌI"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/orderButton"
@@ -91,7 +91,7 @@
             android:layout_weight="1"
             style="@style/Widget.AppCompat.Button.Colored"
             android:background="@color/metroYellow"
-            android:text="Order"/>
+            android:text="ĐƠN\n HÀNG"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancelButton"
@@ -101,7 +101,7 @@
             android:layout_weight="1"
             style="@style/Widget.AppCompat.Button.Colored"
             android:background="@color/metroRed"
-            android:text="Cancel"/>
+            android:text="HỦY"/>
         </LinearLayout>
     </LinearLayout>
 

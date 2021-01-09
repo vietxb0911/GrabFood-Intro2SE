@@ -81,7 +81,7 @@ public class OrderFragment extends Fragment {
                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
                 Log.e(TAG, time);
 //                String time = String.valueOf(millisUntilFinished/1000);
-                edtTime.setText("Expected Time Arrival: " + time);
+                edtTime.setText("Thời gian dự kiến: " + time);
             }
 
             @Override
@@ -98,7 +98,7 @@ public class OrderFragment extends Fragment {
 
     private void initDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-        alertDialog.setTitle("Please rate");
+        alertDialog.setTitle("Đánh giá đơn hàng");
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

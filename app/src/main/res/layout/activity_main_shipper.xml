@@ -37,7 +37,7 @@
                 android:button="@android:color/transparent"
                 android:checked="true"
                 android:textColorHighlight="@color/white"
-                android:text="Off"
+                android:text="TẮT"
                 android:textColor="@color/radio_flat_text_selector" />
 
             <RadioButton
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/radio_flat_selector"
                 android:button="@android:color/transparent"
-                android:text="On"
+                android:text="BẬT"
                 android:textColor="@color/radio_flat_text_selector" />
 
         </RadioGroup>

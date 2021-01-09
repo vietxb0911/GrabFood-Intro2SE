@@ -33,7 +33,7 @@
                 android:button="@android:color/transparent"
                 android:checked="true"
                 android:textColorHighlight="@color/white"
-                android:text="On"
+                android:text="TẮT"
                 android:textColor="@color/radio_flat_text_selector" />
 
             <RadioButton
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/radio_flat_selector"
                 android:button="@android:color/transparent"
-                android:text="Off"
+                android:text="BẬT"
                 android:textColor="@color/radio_flat_text_selector" />
 
         </RadioGroup>
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="Wallet: $100.000"
+            android:text="Wallet: 100.000VNĐ"
             android:textColorHighlight="@color/colorAccent">
 
         </TextView>
@@ -72,7 +72,7 @@
             android:id="@+id/btnOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Order"
+            android:text="ĐƠN HÀNG"
             android:textSize="30dp"
             android:textColor="#ffffff"
             android:background="@drawable/layout_bg10"
@@ -87,7 +87,7 @@
             android:textColor="#ffffff"
             android:layout_marginTop="15dp"
 
-            android:text="Menu"
+            android:text="THỰC ĐƠN"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -98,7 +98,7 @@
             android:layout_height="47dp"
             android:textColor="#ffffff"
             android:layout_marginTop="15dp"
-            android:text="History"
+            android:text="LỊCH SỬ"
 
             />
     </LinearLayout>
@@ -112,20 +112,20 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="36dp"
-            android:layout_height="45dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:textSize="60px"
             android:textAlignment="center"
-            android:text="Completion rate" />
+            android:text="Mức độ\n hoàn thành" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="45dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:textSize="60px"
             android:textAlignment="center"
-            android:text="Rating" />
+            android:text="Đánh giá\n trung bình" />
 
     </LinearLayout>
     <LinearLayout
